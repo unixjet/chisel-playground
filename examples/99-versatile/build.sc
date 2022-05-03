@@ -9,9 +9,9 @@ def mainClass = Some("Toplevel")
 
 val defaultVersions = Map(
   "scala"             -> "2.12.13",
-  "chisel3"           -> "3.4.3",
+  "chisel3"           -> "3.5.3",
   "chisel-iotesters"  -> "1.5.3",
-  "chiseltest"        -> "0.3.3",
+  "chiseltest"        -> "0.5.3",
   "scalatest"         -> "3.2.9",
   "organize-imports"  -> "0.5.0",
   "semanticdb-scalac" -> "4.4.20"
@@ -26,10 +26,14 @@ trait HasChisel3 extends ScalaModule {
   override def scalacPluginIvyDeps = super.scalacPluginIvyDeps() ++ Agg(
     ivy"edu.berkeley.cs:::chisel3-plugin:${defaultVersions("chisel3")}"
   )
+
+/*
   override def scalacOptions = super.scalacOptions() ++ Seq(
     // Enables autoclonetype2 in 3.4.x (remove in chisel3 3.5)
     "-P:chiselplugin:useBundlePlugin"
   )
+*/
+
 }
 
 trait HasChiselTests extends CrossSbtModule {
