@@ -1,3 +1,7 @@
+# ref:
+# https://github.com/Digilent/digilent-xdc/blob/master/Arty-A7-100-Master.xdc
+#
+
 # Clock pin
 set_property -dict { PACKAGE_PIN E3 IOSTANDARD LVCMOS33 } [get_ports {clock}]
 
@@ -11,3 +15,4 @@ set_property -dict { PACKAGE_PIN A8 IOSTANDARD LVCMOS33 } [get_ports { reset }]
 set_property -dict { PACKAGE_PIN H5 IOSTANDARD LVCMOS33 } [get_ports {io_led0}]
 set_property -dict { PACKAGE_PIN J5 IOSTANDARD LVCMOS33 } [get_ports {io_led1}]
 set_property -dict { PACKAGE_PIN T9 IOSTANDARD LVCMOS33 } [get_ports {io_led2}]
+set_property -dict { PACKAGE_PIN T10 IOSTANDARD LVCMOS33 } [get_ports {io_led3}]
