@@ -1,0 +1,43 @@
+CAPI=2:
+
+name: ::chisel-template:0
+description: A basic template based on 01-blinky
+
+filesets:
+
+  base:
+    depend: ["fusesoc:utils:generators"]
+
+  artya7-100t:
+    files:
+      - const/artya7-100t.xdc: { file_type: xdc }
+
+generate:
+
+  default-chisel:
+    generator: chisel
+    parameters: &baseparam
+      extraargs: "-board bypass"
+      chiselproject: toplevel
+      copy_core: true
+      output:
+        files:
+          - generated/Toplevel.v: { file_type: verilogSource }
+
+  artya7-100t:
+    generator: chisel
+    parameters:
+      <<: *baseparam
+      extraargs: "-board artya7-100t -freq 100000000"
+
+targets:
+
+  artya7-100t:
+    default_tool : vivado
+    description: Digilent ArtyA7-100T Board
+    filesets : [base, artya7-100t]
+    generate: [artya7-100t]
+    tools:
+      vivado:
+        part : xc7a100tcsg324-1
+    toplevel : Toplevel
